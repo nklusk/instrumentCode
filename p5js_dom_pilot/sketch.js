@@ -11,32 +11,35 @@ var socket; // the websocket connection
 
 function setup() {
     noCanvas();
-    //textField = createInput();
+    textField = createInput('4C');
     button = createButton('Play Note');
-    button.mousePressed(playNote);
+    // button.mousePressed(playNote);
 
     // connect to server...
     socket = new WebSocket('ws://' + host);
     socket.onopen = openHandler;
 }
 
-function keyTyped() {
-    if (key === 'a') {
-      textField = "14ff";
-    } else if (key === 'e') {
-      textField = "24ff";
-      console.log("key pressed")
-      playNote()
-    } else if (key === 'i') {
-        textField = "34ff";
-      }else if (key === 'o') {
-        textField = "54ff";
-      }else if (key === 'u') {
-        textField = "64ff";
-      }
 
-function playNote() {
-    let note = "note:0" + textField.value();
+
+// function playNote() {
+//     let note = "note:0" + textField.value() + "ff";
+
+//     // send the note to the websocket server
+//     // (if the socket is open and ready)
+//     if (socket.readyState == 1) {
+//         socket.send(note);
+//         console.log("Sent: " + note);
+//     } else {
+//         console.log("Socket not ready.");
+//     }
+// }
+function keyTyped(){
+    let firstSymbol
+    let secondSymbol
+    let duration
+    console.log("key press")
+    let note = "note:0" + textField.value() + "ff";
 
     // send the note to the websocket server
     // (if the socket is open and ready)
@@ -46,8 +49,9 @@ function playNote() {
     } else {
         console.log("Socket not ready.");
     }
-}
 
+
+}
 function openHandler() {
     console.log("Connected to socket server at " + host);
-  }}
+  }
