@@ -11,7 +11,7 @@ var socket; // the websocket connection
 
 function setup() {
     noCanvas();
-    textField = createInput('4C');
+    textField = createInput();
     button = createButton('Play Note');
     button.mousePressed(playNote);
 
