@@ -3,6 +3,21 @@
 // The strings are formatted to match the UDP messages that Pilot expects. 
 // Chataigne maps the websocket message to a UDP message (going to port `49161`).
 
+var hydra = new Hydra({
+    canvas: document.getElementById("myCanvas")
+  })
+  osc(5, 0.05, 0.001)
+  .kaleid([3,4,5,7,8,9,10].fast(0.1))
+  .color(0.55, 0.29)
+  .colorama(0.9)
+  .modulateRotate(o0,()=>Math.sin(time) * 0.003)
+  .modulate(o0, 0.8)
+  .scale(0.7)
+  .out(o0)
+  
+  let hc, pg;
+
+
 let textInput;
 let button;
  let firstSymbol
@@ -11,20 +26,32 @@ let button;
 var host = '127.0.0.1:8080'; // address of the websockets server
 var socket; // the websocket connection
 
+// function preload(){
+//     font = loadFont('assets/AppleGaramond.ttf')
+// }
+
 function setup() {
-    createCanvas(500,500)
+    createCanvas(1200,675)
+    hc = select("#myCanvas");
+    hc.hide();
+    background(220);
+    textInput = createInput();
+    textSize(30);
+    fill('#ffedcf');
+    //textFont(font);
     
     // button.mousePressed(playNote);
 
     // connect to server...
     socket = new WebSocket('ws://' + host);
     socket.onopen = openHandler;
-    textInput = createInput();
+    
 }
 
 function draw(){
-    textSize(30);
-    text(textInput.value(), 10, 30)
+    image(hc, 0, 0)
+    text(textInput.value(), 20, 10, 1170, 660)
+    
 }
 
 
@@ -44,7 +71,6 @@ function draw(){
 function keyTyped(){
    
     console.log("key press")
-    let note = "note:" + firstSymbol + secondSymbol + duration;
 //cdega
     if (key === 'a') {
         firstSymbol = 23;
@@ -151,6 +177,8 @@ function keyTyped(){
         secondSymbol = "c"
         duration ="f"
       }
+
+      let note = "note:" + firstSymbol + secondSymbol + duration;
 
     // send the note to the websocket server
     // (if the socket is open and ready)
