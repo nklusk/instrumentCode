@@ -201,7 +201,7 @@
         "values": {
           "parameters": [
             {
-              "value": "31aff",
+              "value": "03ef",
               "alwaysNotify": true,
               "controlAddress": "/note",
               "type": "String",

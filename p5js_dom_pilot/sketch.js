@@ -26,9 +26,7 @@ let button;
 var host = '127.0.0.1:8080'; // address of the websockets server
 var socket; // the websocket connection
 
-// function preload(){
-//     font = loadFont('assets/AppleGaramond.ttf')
-// }
+
 
 function setup() {
     createCanvas(1200,675)
@@ -38,7 +36,7 @@ function setup() {
     textInput = createInput();
     textSize(30);
     fill('#ffedcf');
-    //textFont(font);
+   
     
     // button.mousePressed(playNote);
 
@@ -51,7 +49,7 @@ function setup() {
 function draw(){
     image(hc, 0, 0)
     text(textInput.value(), 20, 10, 1170, 660)
-    
+    textFont('monospace');
 }
 
 
