@@ -12,14 +12,19 @@ var host = '127.0.0.1:8080'; // address of the websockets server
 var socket; // the websocket connection
 
 function setup() {
-    
+    createCanvas(500,500)
     
     // button.mousePressed(playNote);
 
     // connect to server...
     socket = new WebSocket('ws://' + host);
     socket.onopen = openHandler;
-    textInput = createInput("poetryMusic");
+    textInput = createInput();
+}
+
+function draw(){
+    textSize(30);
+    text(textInput.value(), 10, 30)
 }
 
 
@@ -39,7 +44,7 @@ function setup() {
 function keyTyped(){
    
     console.log("key press")
-    let note = "note:0" + firstSymbol + secondSymbol + duration;
+    let note = "note:" + firstSymbol + secondSymbol + duration;
 //cdega
     if (key === 'a') {
         firstSymbol = 23;
@@ -50,39 +55,39 @@ function keyTyped(){
         secondSymbol = 'd'
         duration = 'f'
       } else if (key === 'c') {
-        firstSymbol = 1;
+        firstSymbol = 12;
         secondSymbol = "e"
         duration ="f"
       } else if (key === 'd') {
-        firstSymbol = 2;
+        firstSymbol = 25;
         secondSymbol = "g"
         duration ="f"
       } else if (key === 'e') {
-        firstSymbol = 3;
+        firstSymbol = 31;
         secondSymbol = "a"
         duration ="ff"
       } else if (key === 'f') {
-        firstSymbol = 4;
+        firstSymbol = "09";
         secondSymbol = "c"
         duration ="f"
       } else if (key === 'g') {
-        firstSymbol = 5;
+        firstSymbol = "05";
         secondSymbol = "d"
         duration ="f"
       } else if (key === 'h') {
-        firstSymbol = 6;
+        firstSymbol = 15;
         secondSymbol = "g"
         duration ="f"
       } else if (key === 'i') {
-        firstSymbol = 7;
+        firstSymbol = 25;
         secondSymbol = "e"
         duration ="ff"
       } else if (key === 'j') {
-        firstSymbol = 8;
+        firstSymbol = "08";
         secondSymbol = "a"
         duration ="f"
       } else if (key === 'k') {
-        firstSymbol = 9;
+        firstSymbol = "09";
         secondSymbol = "c"
         duration ="f"
       } else if (key === 'l') {
@@ -98,7 +103,7 @@ function keyTyped(){
         secondSymbol = "e"
         duration ="f"
       } else if (key === 'o') {
-        firstSymbol = 13;
+        firstSymbol = 40;
         secondSymbol = "a"
         duration ="ff"
       } else if (key === 'p') {
@@ -106,39 +111,39 @@ function keyTyped(){
         secondSymbol = "c"
         duration ="f"
       } else if (key === 'q') {
-        firstSymbol = 1;
+        firstSymbol = 30;
         secondSymbol = "d"
         duration ="f"
       } else if (key === 'r') {
-        firstSymbol = 2;
+        firstSymbol = 35;
         secondSymbol = "g"
         duration ="f"
       } else if (key === 's') {
-        firstSymbol = 3;
+        firstSymbol = "03";
         secondSymbol = "e"
         duration ="f"
       } else if (key === 't') {
-        firstSymbol = 4;
+        firstSymbol = "04";
         secondSymbol = "a"
         duration ="f"
       } else if (key === 'u') {
-        firstSymbol = 5;
+        firstSymbol = 33;
         secondSymbol = "c"
         duration ="ff"
       } else if (key === 'v') {
-        firstSymbol = 6;
+        firstSymbol = 12;
         secondSymbol = "d"
         duration ="f"
       } else if (key === 'w') {
-        firstSymbol = 7;
+        firstSymbol = 17;
         secondSymbol = "g"
         duration ="f"
       } else if (key === 'x') {
-        firstSymbol = 8;
+        firstSymbol = "03";
         secondSymbol = "e"
         duration ="f"
       }else if (key === 'y') {
-        firstSymbol = 9;
+        firstSymbol = "08";
         secondSymbol = "a"
         duration ="f"
       }else if (key === 'z') {
